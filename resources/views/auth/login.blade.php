@@ -1,85 +1,82 @@
 @extends('layouts.app')
 
 @section('styles')
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    
+    <!-- Custom CSS -->
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 @endsection
 
 @section('content')
-<div class="container-fluid p-0 min-vh-100">
-    <div class="row g-0">
-        <!-- Custom Design Side -->
-        <div class="col-xxl-7 col-lg-5 col-md-5 bg-primary d-flex align-items-center">
-            <div class="d-flex flex-column h-100 py-5 px-4 align-items-center justify-content-center text-center">
-                
-                    <h1 class="f-600 text-white">สนามฟุตบอล</h1>
-                
-                <p class="text-white-50">ยินดีให้บริการทุกท่าน สนามฟุตบอลของเรา</p>
-                <div class="d-flex flex-column align-items-center justify-content-center gap-3">
-                    <div class="d-flex">
-                       
-                       
-                    </div>
-                    
-                </div>
-                
-            </div>
+<div class="row mx-0 auth-wrapper">
+    <!-- Background Circles -->
+    <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <!-- Custom Design Side -->
+    <div class="d-none d-sm-flex col-sm-6 col-lg-8 align-items-center p-5">
+        <div class="align-items-start d-lg-flex flex-column offset-lg-2 text-white">
+            
+            <h1 class="d-flex">ยินดีต้อนรับ </h1>
+            <h1 class="d-flex">เว็บจองสนามฟุตบอลและยืมคืนอุปกรณ์</h1>
+           
+                 
         </div>
-
-        <!-- Login Form Side -->
-        <div class="col-xxl-5 col-lg-7 col-md-7">
-            <div class="auth-bg bg-cover bg-center bg-norepeat vh-100 bg-white py-md-5 p-4 d-flex position-relative">
-                <div class="bg-overlay outer-bg bg-white"></div>
-                <div class="row justify-content-center g-0 align-items-center w-100">
-                    <div class="col-xl-8 col-lg-8">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="px-3 py-3">
-                                    <div class="text-center">
-                                        <h5 class="mb-0 f-600">ยินดีต้อนรับ โปรดเข้าสู่ระบบ</h5>
-                                        <p class="text-muted mt-2">เข้าสู่ระบบเพื่อดำเนินการต่อไป</p>
-                                    </div>
-                                    <form method="POST" action="{{ route('login') }}">
-                                        @csrf
-                                        <div class="form-floating form-floating-custom mb-3">
-                                            <input type="text" class="form-control @error('email') is-invalid @enderror" id="input-username" name="email" placeholder="Enter Email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                                            <label for="input-username">อีเมลล์</label>
-                                            @error('email')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="form-floating form-floating-custom mb-3 auth-pass-inputgroup">
-                                            <input type="password" class="form-control @error('password') is-invalid @enderror" id="password-input" name="password" placeholder="Enter Password" required autocomplete="current-password">
-                                            <button type="button" class="btn btn-link position-absolute h-100 end-0 top-0" id="password-addon" aria-label="Toggle password visibility">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="eye" class="lucide lucide-eye h-20 text-muted"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"></path><circle cx="12" cy="12" r="3"></circle></svg>
-                                            </button>
-                                            <label for="password-input">รหัสผ่าน</label>
-                                            @error('password')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                        <div class="mb-3 d-flex justify-content-between align-items-center">
-                                            <div class="form-check form-check-primary font-size-16 py-1">
-                                                <input class="form-check-input" type="checkbox" name="remember" id="remember-check" {{ old('remember') ? 'checked' : '' }}>
-                                                <label class="form-check-label" for="remember-check">
-                                                    จดจำฉัน
-                                                </label>
-                                            </div>
-                                            <div class="">
-                                                <a href="{{ route('password.request') }}" class="text-muted text-decoration-underline">ลืมรหัสผ่าน?</a>
-                                            </div>
-                                        </div>
-                                        <div class="">
-                                            <button class="btn btn-primary w-100" type="submit">เข้าสู่ระบบ</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
+    </div>
+    <!-- Login Form Side -->
+    <div class="d-flex justify-content-center col-sm-6 col-lg-4 align-items-center px-5 bg-white mx-auto">
+        <div class="form-wrapper">
+            <div class="d-flex flex-column">
+                <div class="mb-4">
+                    <h3 class="font-medium mb-1">เข้าสู่ระบบ</h3>
+                    <p class="mb-2">โปรดเข้าสู่ระบบของคุณเพื่อดำเนินการต่อไป</p>
+                </div>
+                <div class="mb-10">
+                    <form method="POST" action="{{ route('login') }}">
+                        @csrf
+                        <div class="form-group">
+                            <label for="email">อีเมลล์</label>
+                            <input id="email" name="email" type="email" class="form-control @error('email') is-invalid @enderror" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                         </div>
-                    </div>
+                        <div class="form-group">
+                            <label for="password">รหัสผ่าน</label>
+                            <input id="password" name="password" type="password" class="form-control @error('password') is-invalid @enderror" required autocomplete="current-password">
+                            @error('password')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="text-right mb-3">
+                            <a class="btn btn-link" href="{{ route('password.request') }}">
+                                ลืมรหัสผ่าน?
+                            </a>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block mt-3 border-0">
+                           เข้าสู่ระบบ
+                        </button>
+                    </form>
+                </div>
+                <div class="p-5 text-center text-xs">
+                    
                 </div>
             </div>
         </div>
